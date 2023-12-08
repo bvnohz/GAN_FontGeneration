@@ -50,16 +50,14 @@ GAN은 위와 같이 Generator & Discriminator를 번갈아 학습시키면서 G
 
 ## Training Codes
 ```
-common
-├── dataset.py    # load dataset
-├── function.py   # deep learning functions : conv2d, relu etc.
-├── models.py     # Generator(Encoder, Decoder), Discriminator
-├── train.py      # model Trainer
-└── utils.py      # data pre-processing etc.
+training
+├── execution.py  # load dataset, visualizing
+├── models.py     # Generator(Encoder, Decoder), Discriminator, deep learning functions(conv2d, relu etc.)
+└── train.py      # model Trainer
 
 get_data
-├── font2img.py   # font.ttf -> image
-└── package.py    # .png -> .pkl
+├── dataload.py   # font.ttf -> image.png -> .pkl
+└── utils.py      # data pre-processing etc.
 ```
 
 
