@@ -15,12 +15,25 @@ GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation �
 실제에 가까운 이미지나 사람이 쓴 것과 같은 글 등, 여러 가지 fake data들을 생성하는 model
 
 
+GAN 구조 사진 첨부해야함
+
+
+**[Generator]**
+
+
+**[Discrinimator]**
+
+
+
 
 
 
 ## Network Structure
 
 ### Model Structure
+모델구조사진
+
+
 
 
 
@@ -41,4 +54,4 @@ get_data
 
 
 
-## 💎 Result
+## Result
