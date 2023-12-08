@@ -2,7 +2,7 @@
 GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation 프로젝트
    - 팀원: 박주현, 윤지영, 이종호
    - 프로젝트 기간: 2023.11.13. ~ 2023.11.27.
-   - 개발환경: 
+   - 개발환경:  
 
 
   
