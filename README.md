@@ -13,9 +13,9 @@ GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation �
 
 ### GAN(Generative Adversarial Nets)
 실제에 가까운 이미지나 사람이 쓴 것과 같은 글 등, 여러 가지 fake data들을 생성하는 model
+생성자(Generator)와 판별자(Discriminator)가 서로 경쟁을 하면서 새로운 데이터를 생성한다.
 
-
-GAN 구조 사진 첨부해야함
+<p align="center"><img src="https://github.com/juooo1117/GAN_Hangeul/assets/95035134/291fb607-cee8-49c4-9f9e-4fa48d135526" width="600"></p>
 
 
 **[Generator]**
