@@ -4,12 +4,12 @@ GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation �
    - 프로젝트 기간: 2023.11.13. ~ 2023.11.27.
    - 개발환경: 
   
-## 🏆 Project Introduction
+## Project Introduction
    - 다양한 Font 스타일이 존재하지만, Font를 만드는 일은 많은 시간과 비용이 드는 전문적인 작업임
    - 이에 따라서, GAN model을 활용해서 여러가지 스타일의 폰트를 학습하고, 학습한 여러가지 폰트 스타일을 바탕으로 새로운 스타일의 Font를 생성하는 과정을 진행하기로 결정
 
 
-## 📖 Research and Analysis
+## Research and Analysis
 
 ### GAN(Generative Adversarial Nets)
 실제에 가까운 이미지나 사람이 쓴 것과 같은 글 등, 여러 가지 fake data들을 생성하는 model
@@ -18,17 +18,26 @@ GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation �
 
 
 
-## 📝 Data Pre-processing
-
-
-
-
-
-## 🏆 Modeling
+## Network Structure
 
 ### Model Structure
 
 
+
+
+## Training Codes
+```
+common
+├── dataset.py    # load dataset
+├── function.py   # deep learning functions : conv2d, relu etc.
+├── models.py     # Generator(Encoder, Decoder), Discriminator
+├── train.py      # model Trainer
+└── utils.py      # data pre-processing etc.
+
+get_data
+├── font2img.py   # font.ttf -> image
+└── package.py    # .png -> .pkl
+```
 
 
 
