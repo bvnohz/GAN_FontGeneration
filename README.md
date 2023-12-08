@@ -16,17 +16,24 @@ GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation �
 
 Generative Adversarial Nets 이라는 이름은 실제 데이터의 분포와 유사한 분포를 추정하기 위해서 Generator, Discriminator 두 모델을 적대적(Adversarial) 방식을 통해 모델을 training시키기 때문에 붙여진 이름이다.
 
+GAN Model의 최종적인 목적은 training data와 비교했을 때 구분할 수 없을 정도로 유사한 fake data를 생성할 수 있도록 training data의 분포를 추정하는 fake data의 분포를 찾는 것이다.
+
 <p align="center"><img src="https://github.com/juooo1117/GAN_Hangeul/assets/95035134/291fb607-cee8-49c4-9f9e-4fa48d135526" width="600"></p>
 
 
 **[Generator]**
+Generator의 역할은 Discriminator가 real과 fake를 구별할 수 없을 만큼 진짜같은 fake data를 만들어내는 것이다.
+
+Noise vector 'z'를 표준정규분포로부터 샘플링한 후에, 'z'를 input으로 넣어서 fake data를 만든다. 가짜이지만 진짜같은 데이터를 만들어 내는 것이 목표이기 때문에 discriminator에 만든 fake data를 넣었을 때 높은 확률을 반환하는 방향으로 weight를 업데이트시키면서 학습한다.
 
 
-**[Discrinimator]**
+**[Discriminator]**
+Discriminator의 역할은 주어진 input data가 real data인지 fake data인지를 구별하는 것이다. input data가 주어졌을 때 discriminator의 output은 input data가 real data일 확률을 반환한다.
+
+진짜데이터와 가짜데이터를 판별하는 것이 목적이기 때문에, Generator는 고정시켜두고 real data가 들어왔을 때는 높은 확률을 반환하고, fake data가 들어왔을 때는 낮은 확률을 반환하는 방향으로 weight를 업데이트하는 방향으로 discriminator를 학습시킨다.
 
 
-
-
+GAN은 위와 같이 Generator & Discriminator를 번갈아 학습시키면서 Generator는 Discriminator가 판별할 수 없을 만큼 가짜 데이터를 잘 만들어 낼 수 있도록 만들고, Discriminator는 Generator가 진짜같은 가짜데이터를 만들어내더라도 잘 판별할 수 있도록 만들면서 균형점을 찾아간다.
 
 
 ## Network Structure
