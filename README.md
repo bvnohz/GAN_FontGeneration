@@ -11,7 +11,7 @@ GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation �
    - 이에 따라서, GAN model을 활용해서 여러가지 스타일의 폰트를 학습하고, 학습한 여러가지 폰트 스타일을 바탕으로 새로운 스타일의 Font를 생성하는 과정을 진행하기로 결정
    - 각각의 폰트 스타일의 특징을 잘 표현하는 벡터로 구성된 분포 공간인 Latent Space(Feature Space)를 파악하고, 해당 공간 사이에서 새로운 feature를 발견해서 새로운 스타일의 font를 만들어내기로 함
 
-
+ 
 
 ## Research and Analysis
 
