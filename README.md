@@ -21,12 +21,12 @@ GAN Model의 최종적인 목적은 training data와 비교했을 때 구분할 
 <p align="center"><img src="https://github.com/juooo1117/GAN_Hangeul/assets/95035134/291fb607-cee8-49c4-9f9e-4fa48d135526" width="600"></p>
 
 
-#### Generator
+### Generator
 
 Generator의 역할은 Discriminator가 real과 fake를 구별할 수 없을 만큼 진짜같은 fake data를 만들어내는 것이다. Noise vector 'z'를 표준정규분포로부터 샘플링한 후에, 'z'를 input으로 넣어서 fake data를 만든다. 가짜이지만 진짜같은 데이터를 만들어 내는 것이 목표이기 때문에 discriminator에 만든 fake data를 넣었을 때 높은 확률을 반환하는 방향으로 weight를 업데이트시키면서 학습한다.
 
 
-#### Discriminator
+### Discriminator
 
 Discriminator의 역할은 주어진 input data가 real data인지 fake data인지를 구별하는 것이다. input data가 주어졌을 때 discriminator의 output은 input data가 real data일 확률을 반환한다. 진짜데이터와 가짜데이터를 판별하는 것이 목적이기 때문에, Generator는 고정시켜두고 real data가 들어왔을 때는 높은 확률을 반환하고, fake data가 들어왔을 때는 낮은 확률을 반환하는 방향으로 weight를 업데이트하는 방향으로 discriminator를 학습시킨다.
 
