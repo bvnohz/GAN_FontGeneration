@@ -56,7 +56,7 @@ c-vector는 encoder를 통과해서 low dimensional vector로써 mapping된 z-ve
 GAN Model은 generator, discriminator가 서로 겨루면서 학습하는 generative model이기 때문에 학습에 있어서 여러가지의 불안정성 문제가 발생한다. 따라서 잘 설계된 loss function을 필요로 한다.
 
 
-### Loss for Generator
+### \# Loss for Generator
 **Target similarity Loss(L1 Loss)** : generator의 가장 기본 목표를 위한 것으로, real data와 fake data를 pixel 단위로 비교하기 위해서 MAE(Mean Absolute Error)를 사용한다. MAE가 크다면 두 이미지가 다르다는 의미이기 때문에 generator는 이 loss를 줄이는 방향으로 학습된다.
 
 
@@ -66,7 +66,7 @@ GAN Model은 generator, discriminator가 서로 겨루면서 학습하는 genera
 **Category Loss**: discriminator가 올바른 font category로 판단할 수 있을 만큼 font style(feature)이 잘 반영된 image data를 생성할 수 있도록 학습되기 위한 loss이다.
 
 
-### Loss for Discriminator
+### \# Loss for Discriminator
 **Binary Loss** : 입력받은 image data가 fake인지 real인지 구분하는 loss이며 예측 정도를 T/F 예측을 0~1 사이의 값으로 출력한다. true or false 두가지 category를 비교하게 되므로 이진분류에 쓰이는 Binary Cross Entropy(BCE)를 사용한다.
 
 
@@ -100,7 +100,7 @@ get_data
 
 ## Result
 학습시킨 모델을 이용해서 새로운 두 가지의 font style을 입력으로 넣었을 때 그 결과로 두 폰트 사이에서 style transfer가 매끄럽게 발생하고 있는 것을 확인할 수 있다.
-<p align="center"><img src="https://github.com/juooo1117/GAN_Hangeul/assets/95035134/43aa2aa0-590f-4a8d-b82e-995f6a50ae7f" width="400"></p>
+<p align="center"><img src="https://github.com/juooo1117/GAN_Hangeul/assets/95035134/43aa2aa0-590f-4a8d-b82e-995f6a50ae7f" width="450"></p>
 
 위 결과를 이용해서 사용자는 웹페이지에서 주어진 font style 이미지 중에서 원하는 폰트 스타일을 2가지 선택하면, 두 가지 폰트 스타일의 latent space에서 scrolling을 통해서 새로운 font style을 생성하여 보여준다.
 <p align="center"><img src="https://github.com/juooo1117/GAN_Hangeul/assets/95035134/df83c83e-5a47-43a4-b8b8-0eeecc0de2fe" width="700"></p>
