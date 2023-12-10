@@ -58,6 +58,8 @@ GAN Model은 generator, discriminator가 서로 겨루면서 학습하는 genera
 
 ### Loss for Generator
 **Target similarity Loss(L1 Loss)** 
+
+
 generator의 가장 기본 목표를 위한 것으로, real data와 fake data를 pixel 단위로 비교하기 위해서 MAE(Mean Absolute Error)를 사용한다. 
 MAE가 크다면 두 이미지가 다르다는 의미이기 때문에 generator는 이 loss를 줄이는 방향으로 학습된다.
 
