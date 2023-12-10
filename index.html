@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- created by lunab -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <style>
+        img {
+            background: #333;
+        }
+        .target_img {
+            width: 100px;
+            height: 100px;
+        }
+        .result_img {
+            width: 150px;
+            height: 150px;
+        }
+        .target_font {
+            width: 80px;
+            height: 80px;
+            background-color: #DDD;
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+        .target_font:hover {
+            background-color: #666;
+        }
+        .custom-range::-webkit-slider-thumb {
+            border-radius: 100px;
+            background: #0d1117;
+        }
+        .custom-range::-moz-range-thumb {
+            background: #0d1117;
+        }
+        .custom-range::-ms-thumb {
+            background: #0d1117;
+        }
+
+        .fake_image {
+            background-color: #DDD;
+            width: 256px;
+            height: 256px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="jumbotron pb-4">
+                <h1 class="display-4">FIND YOUR NEW FONT STYLE</h1>
+                <p class="lead">2개의 폰트 스타일을 선택해서 새로운 스타일을 만들어 보세요</p>
+                <hr class="my-4">
+                <p>
+                    Create and Find your font style
+                </p>
+                <a class="btn btn-dark" href="https://github.com/juooo1117" role="button">Go To GITHUB</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div :style="`display: ${step==0?'block':'none'};`">
+                        <h4 class="alert-heading">Step 1. Select the Font </h4>
+                        <p>Chppse 2 Font</p>
+                    </div>
+                    <div :style="`display: ${step==1?'block':'none'};`">
+                        <h4 class="alert-heading">Step 2. Try scrolling</h4>
+                        <p>Observe the change in font style</p>
+                    </div>
+                    <div :style="`display: ${step==2?'block':'none'};`">
+                        <h4 class="alert-heading">Step 3. Try scrolling ~</h4>
+                        <p>스크롤을 움직이면 선택한 두 폰트의 학습된 잠재공간의 사진을 볼 수 있어요</p>
+                    </div>
+                    <div :style="`display: ${step==3?'block':'none'};`">
+                        <h4 class="alert-heading">Step 4. You created a new style. </h4>
+                        <hr>
+                        <p class="mb-0">좋은 프로젝트였다고 생각되시면 Github star 눌러주세요 ~</p>
+                        <a class="github-button" href="https://github.com/sju-coml/2020-Font-picker" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star sju-coml/2020-Font-picker on GitHub">Star</a>
+                    </div>
+                </div>
+
+                <div class="my-5">
+                    <div class="row align-items-center">
+                        <div v-for="(font, i) in fonts" :key="i" class="col text-center p-0">
+                            <img :src="font.image" :class="`target_font border rounded-sm ${(i == startImage ? 'border-primary': '')} ${(i == endImage ? 'border-secondary': '')}`" v-on:click="chooseTarget(font, i)" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div v-if="step >= 2" class="text-center">
+                    <img class="fake_image border border-success" :src="pickImage" alt="">
+                    <div v-for="img in images" :key="img">
+                        <img :src="img" alt="Generated Image" class="generated-image" />
+                    </div>
+                </div> -->
+
+                <!-- <div class="my-5">
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <img :class="`target_font border rounded-sm border-primary`" :src="sImage" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <div class="row" style="width: 240px; margin: 0 auto;">
+                                    <div class="col p-0">
+                                        <input class="form-control form-control-lg m-0 float-right" pattern="[a-zA-Z0-9]{1}" style="width: 100px;" type="text" v-model="char" placeholder="T">
+                                    </div>
+                                    <div class="col p-0">
+                                        <button class="btn btn-lg btn-success m-0" v-on:click="submit">생성</button>
+                                    </div>
+                                </div>
+                                <input type="range" :disabled="step < 2" class="form-control-range mt-2 custom-range" v-model="pick" min="0" max="99">
+                            </div>
+                        </div>
+                        <div class="col-md-auto">
+                            <img :class="`target_font border rounded-sm border-secondary`" :src="eImage" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <input class="form-control" type="text" v-model="path" placeholder="test path">
+                </div>
+                 -->
+
+                 <div id="app">
+                    <div>
+                        <img class="rounded float-left target_img" :src="sImage">
+                        <img class="rounded float-right target_img" :src="eImage">
+                    </div>
+                
+                    <form>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" v-model="pick" min="0" max="100">
+                        </div>
+                    </form>
+                    <h3>Finally, You created a new font style</h3>
+                    <div class="text-center">
+                        <img class="rounded result_img" alt="" :src="gifUrl" style="width: 650px; height: 450px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                fonts: [
+                    {
+                        name: "",
+                        image: "https://raw.githubusercontent.com/HinaUsagiNote/HinaUsagiNote.github.io/master/images/image_1.png",
+                        active: false
+                    },
+                    {
+                        name: "",
+                        image: "https://raw.githubusercontent.com/HinaUsagiNote/HinaUsagiNote.github.io/master/images/font-1.png",
+                        active: false
+                    },
+                    {
+                        name: "",
+                        image: "https://raw.githubusercontent.com/HinaUsagiNote/HinaUsagiNote.github.io/master/images/font-2.png",
+                        active: false
+                    },
+                    {
+                        name: "",
+                        image: "https://raw.githubusercontent.com/HinaUsagiNote/HinaUsagiNote.github.io/master/images/font-3.png",
+                        active: false
+                    },
+                    {
+                        name: "",
+                        image: "https://raw.githubusercontent.com/HinaUsagiNote/HinaUsagiNote.github.io/master/images/image_2.png",
+                        active: false
+                    },
+                ],
+                startImage: null,
+                endImage: null,
+                images: [],
+                step: 0,
+                char: "A",
+                pick: 0,
+                paction: 0,
+                path: "http://4f9a1e75ad61.ngrok.io",
+                gifUrl: "https://github.com/HinaUsagiNote/HinaUsagiNote.github.io/blob/master/images/A.gif?raw=true"
+            },
+            computed: {
+                sImage() {
+                    if (this.startImage === null) {
+                        return 'https://bulma.io/images/placeholders/128x128.png';
+                    } else {
+                        return this.fonts[this.startImage].image;
+                    }
+                },
+                eImage() {
+                    if (this.endImage === null) {
+                        return 'https://bulma.io/images/placeholders/128x128.png';
+                    } else {
+                        return this.fonts[this.endImage].image;
+                    }
+                },
+                pickImage() {
+                    if (this.images.length !== 0) {
+                        if (this.paction === 5) {
+                            setInterval(() => {
+                                this.step = 3;
+                            }, 5000);
+                        } else if (this.paction <= 5) {
+                            this.paction += 1;
+                        }
+                        return 'data:image/png;base64,' + this.images[this.pick];
+                    }
+                    return 'https://bulma.io/images/placeholders/128x128.png';
+                }
+            },
+            methods: {
+                chooseTarget(font, i) {
+                    let len = this.fonts.filter(x => x.active === true).length;
+                    if (len === 2) {
+                        console.log("Clear!");
+                        this.clearTarget();
+                    } else if (len === 0) {
+                        font.active = true;
+                        this.startImage = i;
+                    } else if (len === 1) {
+                        if (this.endImage === i) {
+                            console.log("중복");
+                            return;
+                        }
+                        font.active = true;
+                        this.endImage = i;
+                        this.step = 1;
+                    }
+                },
+                clearTarget() {
+                    this.fonts.forEach(function (font) {
+                        font.active = false;
+                    });
+                    this.startImage = null;
+                    this.endImage = null;
+                    this.pick = 0;
+                    this.step = 0;
+                    this.paction = 0;
+                },
+                submit() {
+                    axios.get("/api/pick/", {
+                        params: {
+                            ch: this.char,
+                            start: this.startImage,
+                            end: this.endImage
+                        }
+                    }).then((res) => {
+                        this.images = res.data.images;
+                        this.step = 2;
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
