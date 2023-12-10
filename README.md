@@ -99,5 +99,8 @@ get_data
 
 
 ## Result
+두 폰트 사이에서 style transfer가 매끄럽게 발생하고 있는 것을 확인할 수 있다.
+<p align="center"><img src="https://github.com/juooo1117/GAN_Hangeul/assets/95035134/43aa2aa0-590f-4a8d-b82e-995f6a50ae7f" width="600"></p>
 
-
+사용자는 원하는 폰트 스타일을 2가지 선택하면, 두 가지 폰트 스타일의 latent space에서 scrolling하면서 새로운 font style을 생성하게 된다.
+<p align="center"><img src="https://github.com/juooo1117/GAN_Hangeul/assets/95035134/df83c83e-5a47-43a4-b8b8-0eeecc0de2fe" width="800"></p>
