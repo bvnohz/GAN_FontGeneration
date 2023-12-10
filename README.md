@@ -52,10 +52,8 @@ c-vector는 encoder를 통과해서 low dimensional vector로써 mapping된 z-ve
 이렇게 두 가지 판단을 하는 discriminator를 만들기 위해서 FC Layer를 2개로 독립적으로 만들어서 2개의 output이 나올 수 있도록 model architecture를 구성한다.
 
 
-### Losses for training
+## Losses for training
 GAN Model은 generator, discriminator가 서로 겨루면서 학습하는 generative model이기 때문에 학습에 있어서 여러가지의 불안정성 문제가 발생한다. 따라서 잘 설계된 loss function을 필요로 한다.
-
-
 
 
 ### \# Loss for Generator
