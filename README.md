@@ -56,27 +56,24 @@ c-vector는 encoder를 통과해서 low dimensional vector로써 mapping된 z-ve
 GAN Model은 generator, discriminator가 서로 겨루면서 학습하는 generative model이기 때문에 학습에 있어서 여러가지의 불안정성 문제가 발생한다. 따라서 잘 설계된 loss function을 필요로 한다.
 
 
+
+
 ### \# Loss for Generator
-#### Target similarity Loss(L1 Loss)
-generator의 가장 기본 목표를 위한 것으로, real data와 fake data를 pixel 단위로 비교하기 위해서 MAE(Mean Absolute Error)를 사용한다. MAE가 크다면 두 이미지가 다르다는 의미이기 때문에 generator는 이 loss를 줄이는 방향으로 학습된다.
+**Target similarity Loss(L1 Loss)**: generator의 가장 기본 목표를 위한 것으로, real data와 fake data를 pixel 단위로 비교하기 위해서 MAE(Mean Absolute Error)를 사용한다. MAE가 크다면 두 이미지가 다르다는 의미이기 때문에 generator는 이 loss를 줄이는 방향으로 학습된다.
 
 
-#### Z-vector similarity Loss(Constant Loss)
-encoder를 통과한 뒤 만들어지는 source image의 latent space에서의 위치(z-vector)와 generator에서 생성된 fake image의 위치(z-vector)를 비교해서 loss를 계산한다.
+**Z-vector similarity Loss(Constant Loss)**: encoder를 통과한 뒤 만들어지는 source image의 latent space에서의 위치(z-vector)와 generator에서 생성된 fake image의 위치(z-vector)를 비교해서 loss를 계산한다.
 Constant loss는 두 z-vector가 비슷하게 유지될 수 있도록 제어하는 역할을 수행한다.
 
 
-#### Category Loss
-discriminator가 올바른 font category로 판단할 수 있을 만큼 font style(feature)이 잘 반영된 image data를 생성할 수 있도록 학습되기 위한 loss이다.
+**Category Loss**: discriminator가 올바른 font category로 판단할 수 있을 만큼 font style(feature)이 잘 반영된 image data를 생성할 수 있도록 학습되기 위한 loss이다.
 
 
 ### \# Loss for Discriminator
-#### Binary Loss
-입력받은 image data가 fake인지 real인지 구분하는 loss이며 예측 정도를 T/F 예측을 0~1 사이의 값으로 출력한다. true or false 두가지 category를 비교하게 되므로 이진분류에 쓰이는 Binary Cross Entropy(BCE)를 사용한다.
+**Binary Loss**: 입력받은 image data가 fake인지 real인지 구분하는 loss이며 예측 정도를 T/F 예측을 0~1 사이의 값으로 출력한다. true or false 두가지 category를 비교하게 되므로 이진분류에 쓰이는 Binary Cross Entropy(BCE)를 사용한다.
 
 
-#### Category Loss
-font category를 올바르게 예측할 수 있도록 하는 loss, 이는 generator가 font style의 특징을 제대로 담아서 생성할 수 있도록 돕는 역할을 하며, cross entropy를 이용한다.
+**Category Loss**:font category를 올바르게 예측할 수 있도록 하는 loss, 이는 generator가 font style의 특징을 제대로 담아서 생성할 수 있도록 돕는 역할을 하며, cross entropy를 이용한다.
 
 
 
