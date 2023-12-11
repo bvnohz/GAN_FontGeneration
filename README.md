@@ -4,7 +4,7 @@ GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation �
    - 프로젝트 기간: 2023.11.13. ~ 2023.11.27.
    - 개발환경:  
 
-    
+     
   
 ## Project Introduction
    - 다양한 Font 스타일이 존재하지만, Font를 만드는 일은 많은 시간과 비용이 드는 전문적인 작업임
