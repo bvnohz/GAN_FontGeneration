@@ -7,7 +7,7 @@ GAN(Generative Adversarial Nets) 모델을 활용한 새로운 Font Generation �
      <img src="https://img.shields.io/badge/pycharm-000000?style=for-the-badge&logo=pycharm&logoColor=white">
      <img src="https://img.shields.io/badge/pytorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white">
 
-     
+      
   
 ## Project Introduction
    - 다양한 Font 스타일이 존재하지만, Font를 만드는 일은 많은 시간과 비용이 드는 전문적인 작업임
